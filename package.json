@@ -4,7 +4,10 @@
   "description": "JS Entity Framework Code First Code Generator",
   "main": "./ef-gen/index.js",
   "scripts": {
-    "test": "node ./tests/index.js"
+    "test": "ava test",
+    "build": "npm run build:clean && npm run build:transpile",
+    "build:transpile": "babel src -d build --source-maps inline",
+    "build:clean": "trash build/**/*"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,20 @@
     "mkdirp": "^0.5.1",
     "sql-schema-reader": "^3.0.0",
     "writefile": "^0.2.8"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-pundits": "^2.0.3",
+    "babel-register": "^6.24.1",
+    "trash-cli": "^1.4.0"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-polyfill",
+      "babel-register"
+    ]
   }
 }
