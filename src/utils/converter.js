@@ -1,13 +1,17 @@
 /**
+ *Converts to a CS Type
  *
- * @param name
- * @param isNullable
- * @returns {*}
+ * @public
+ *
+ * @param {string} type
+ * @param {boolean} isNullable
+ *
+ * @returns {string}
  */
-export const toCSType = (name, isNullable = false) => {
+export const toCSType = (type, isNullable = false) => {
   const suffix = isNullable ? `?` : ``;
 
-  switch (name.toLowerCase()) {
+  switch (type.toLowerCase()) {
     case 'bigint':
       return `long${suffix}`;
 
@@ -44,15 +48,21 @@ export const toCSType = (name, isNullable = false) => {
       return `byte[]`;
   }
 
-  return name;
+  return type;
 };
 
 /**
  *
- * @param name
+ * Converts to a SQL DB Type
+ *
+ * @public
+ *
+ * @param {string} type
+ *
+ * @returns {string}
  */
-export const toSqlDbType = (name) => {
-  switch (name.toLowerCase()) {
+export const toSqlDbType = type => {
+  switch (type.toLowerCase()) {
     case 'bigint':
     case 'long':
       return 'BigInt';
@@ -93,7 +103,7 @@ export const toSqlDbType = (name) => {
       return 'Float';
   }
 
-  return name;
+  return type;
 };
 
 

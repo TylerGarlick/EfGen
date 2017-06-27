@@ -1,5 +1,5 @@
 import Test from 'ava';
-import * as Formatter from '../../src/utils/formatter';
+import * as Formatter from '../../src/utils/converter';
 
 Test('formats to NonNullable proper CS Type', async t => {
 
